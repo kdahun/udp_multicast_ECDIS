@@ -10,7 +10,9 @@ import tkinter as tk
 from tkinter import ttk
 
 from .core import MulticastEngine
-from .ui import BamTab, ConfigTab, ReceiveTab, SendTab, VdrTab
+from .ui import (
+    BamTab, ConfigTab, EpfsTab, HeadingTab, ReceiveTab, SdmeTab, SendTab, VdrTab,
+)
 
 
 class App(tk.Tk):
@@ -30,12 +32,18 @@ class App(tk.Tk):
         self.receive_tab = ReceiveTab(nb, self._engine.subscribe())
         self.bam_tab = BamTab(nb, self._engine.subscribe())
         self.vdr_tab = VdrTab(nb)
+        self.epfs_tab = EpfsTab(nb)
+        self.heading_tab = HeadingTab(nb)
+        self.sdme_tab = SdmeTab(nb)
 
         nb.add(self.config_tab, text="UDP MULTICAST 설정")
         nb.add(self.send_tab, text="송신 메시지")
         nb.add(self.receive_tab, text="수신 메시지")
         nb.add(self.bam_tab, text="BAM")
         nb.add(self.vdr_tab, text="VDR")
+        nb.add(self.epfs_tab, text="EPFS")
+        nb.add(self.heading_tab, text="Heading")
+        nb.add(self.sdme_tab, text="SDME")
 
         self.protocol("WM_DELETE_WINDOW", self._on_close)
         self._bring_to_front()
@@ -57,6 +65,9 @@ class App(tk.Tk):
     def _on_close(self) -> None:
         self._engine.stop()
         self.vdr_tab.shutdown()
+        self.epfs_tab.shutdown()
+        self.heading_tab.shutdown()
+        self.sdme_tab.shutdown()
         self.destroy()
 
 
