@@ -22,10 +22,15 @@ open dist/UDP-Multicast-ECDIS.app
 
 ```bat
 packaging\build_windows.bat
-REM 결과: dist\UDP-Multicast-ECDIS.exe
+REM 결과: dist\UDP-Multicast-ECDIS.exe  (단일 파일)
 ```
 
+Windows 는 **onefile(단일 exe)** 로 빌드된다 → **이 `.exe` 파일 하나만** 다른 PC로
+복사하면 그대로 실행된다(별도 폴더·설치 불필요).
+
 SmartScreen 경고가 뜨면 "추가 정보 → 실행"을 누른다(코드 서명 시 사라짐).
+Windows Defender 가 미서명 onefile 을 오탐할 수 있는데, 이 경우 예외 처리하거나
+코드 서명을 붙이면 된다.
 
 ## GitHub Actions (양 OS 동시 빌드)
 
@@ -43,7 +48,7 @@ SmartScreen 경고가 뜨면 "추가 정보 → 실행"을 누른다(코드 서�
 | 실행 형태 | 설정/이미지 저장 위치 |
 |---|---|
 | 소스(`python main.py`) | 저장소 루트 (기존과 동일) |
-| **번들 .app / .exe** | **사용자 데이터 폴더** |
+| **번들 .exe(Windows) / .app(macOS)** | **사용자 데이터 폴더** |
 
 번들 실행 시 사용자 데이터 폴더:
 
