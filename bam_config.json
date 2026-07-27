@@ -1,0 +1,9 @@
+{
+  "source_id": "CA0001",
+  "dest_id": "EI0001",
+  "acn_ip": "239.192.0.19",
+  "acn_port": 60019,
+  "acn_iface": "",
+  "acn_ttl": 1,
+  "tag_extra": "x:Nav,z:Nav"
+}

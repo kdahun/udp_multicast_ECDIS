@@ -1,0 +1,106 @@
+[
+  {
+    "name": "GROUP1",
+    "ip": "239.0.0.1",
+    "port": 5000,
+    "iface": "",
+    "ttl": 1,
+    "enabled": false
+  },
+  {
+    "name": "VDM(AIS)",
+    "ip": "239.192.50.82",
+    "port": 5082,
+    "iface": "0.0.0.0",
+    "ttl": 1,
+    "enabled": false
+  },
+  {
+    "name": "TTM(Radar)",
+    "ip": "239.192.0.9",
+    "port": 5079,
+    "iface": "0.0.0.0",
+    "ttl": 1,
+    "enabled": false
+  },
+  {
+    "name": "BAM",
+    "ip": "239.192.0.17",
+    "port": 60017,
+    "iface": "0.0.0.0",
+    "ttl": 1,
+    "enabled": false
+  },
+  {
+    "name": "BAM2",
+    "ip": "239.192.0.19",
+    "port": 60019,
+    "iface": "0.0.0.0",
+    "ttl": 1,
+    "enabled": true
+  },
+  {
+    "name": "GPS1",
+    "ip": "239.192.50.82",
+    "port": 5082,
+    "iface": "0.0.0.0",
+    "ttl": 1,
+    "enabled": false
+  },
+  {
+    "name": "GYRO1",
+    "ip": "239.192.50.80",
+    "port": 5080,
+    "iface": "0.0.0.0",
+    "ttl": 1,
+    "enabled": false
+  },
+  {
+    "name": "BAM3",
+    "ip": "239.192.0.20",
+    "port": 60020,
+    "iface": "0.0.0.0",
+    "ttl": 1,
+    "enabled": false
+  },
+  {
+    "name": "VDR1",
+    "ip": "239.192.0.26",
+    "port": 60026,
+    "iface": "0.0.0.0",
+    "ttl": 1,
+    "enabled": false
+  },
+  {
+    "name": "VDR2",
+    "ip": "239.192.0.27",
+    "port": 60027,
+    "iface": "0.0.0.0",
+    "ttl": 1,
+    "enabled": false
+  },
+  {
+    "name": "MES_VDR1",
+    "ip": "239.192.1.27",
+    "port": 60127,
+    "iface": "0.0.0.0",
+    "ttl": 1,
+    "enabled": false
+  },
+  {
+    "name": "MES_VDR2",
+    "ip": "239.192.1.26",
+    "port": 60126,
+    "iface": "0.0.0.0",
+    "ttl": 1,
+    "enabled": false
+  },
+  {
+    "name": "RRT",
+    "ip": "239.192.0.4",
+    "port": 60007,
+    "iface": "0.0.0.0",
+    "ttl": 1,
+    "enabled": false
+  }
+]

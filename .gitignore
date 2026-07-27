@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# macOS
+.DS_Store
+
+# 런타임 수신 산출물 (VDR 이미지)
+vdr_images/
