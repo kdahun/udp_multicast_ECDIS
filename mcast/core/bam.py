@@ -14,9 +14,9 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from time import time as _now
 
-from . import nmea
+from . import nmea, paths
 
-BAM_CONFIG_PATH = Path(__file__).resolve().parents[2] / "bam_config.json"
+BAM_CONFIG_PATH = paths.config_path("bam_config.json")
 
 # ACN 명령
 CMD_ACK = "A"        # Acknowledge

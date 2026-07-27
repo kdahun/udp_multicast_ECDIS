@@ -14,7 +14,9 @@ import json
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
-SENSORS_CONFIG_PATH = Path(__file__).resolve().parents[2] / "sensors_config.json"
+from . import paths
+
+SENSORS_CONFIG_PATH = paths.config_path("sensors_config.json")
 
 
 # ---------------------------------------------------------------------------

@@ -1,0 +1,41 @@
+name: build-executables
+
+# macOS 와 Windows 실행 파일을 한 번에 빌드한다.
+# (PyInstaller 는 교차 컴파일이 안 되므로 각 OS 러너에서 각각 빌드)
+
+on:
+  workflow_dispatch:        # 수동 실행
+  push:
+    tags: ["v*"]            # v1.0.0 같은 태그 push 시 자동 빌드
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            artifact: UDP-Multicast-ECDIS-macos
+          - os: windows-latest
+            artifact: UDP-Multicast-ECDIS-windows
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install build deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r packaging/requirements-build.txt
+
+      - name: Build
+        run: pyinstaller --noconfirm --clean build.spec
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: dist/*

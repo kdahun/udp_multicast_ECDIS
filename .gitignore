@@ -10,3 +10,9 @@ vdr_images/
 
 # 센서 탭 런타임 설정 (기본값은 mcast/core/sensors.py 에 있음)
 sensors_config.json
+
+# PyInstaller 빌드 산출물
+build/
+dist/
+.buildvenv/
+*.spec.bak

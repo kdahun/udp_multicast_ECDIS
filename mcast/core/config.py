@@ -5,10 +5,11 @@ import json
 import os
 from pathlib import Path
 
+from . import paths
 from .models import MulticastGroup
 
-# 프로젝트 루트(= mcast 패키지의 부모)에 설정 파일을 둔다.
-DEFAULT_CONFIG_PATH = Path(__file__).resolve().parents[2] / "mc_config.json"
+# 개발 실행: 저장소 루트 / 번들 실행: 사용자 데이터 폴더 (paths 참고)
+DEFAULT_CONFIG_PATH = paths.config_path("mc_config.json")
 
 
 def load_groups(path: os.PathLike | str = DEFAULT_CONFIG_PATH) -> list[MulticastGroup]:

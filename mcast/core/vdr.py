@@ -16,6 +16,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 
+from . import paths
 from .models import MulticastGroup
 from .sockets import close_quietly, create_receiver
 
@@ -24,8 +25,8 @@ IEND = b"IEND"
 RECV_BUF = 65535
 FRAME_TIMEOUT = 5.0
 
-# vdr_image.py 와 동일한 저장 폴더
-OUT_DIR = Path(__file__).resolve().parents[2] / "vdr_images"
+# 개발 실행: 저장소 루트 / 번들 실행: 사용자 데이터 폴더 아래 vdr_images/
+OUT_DIR = paths.data_dir() / "vdr_images"
 
 
 # ---------------------------------------------------------------------------
