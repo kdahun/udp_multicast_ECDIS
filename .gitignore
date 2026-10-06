@@ -8,8 +8,9 @@ __pycache__/
 # 런타임 수신 산출물 (VDR 이미지)
 vdr_images/
 
-# 센서 탭 런타임 설정 (기본값은 mcast/core/sensors.py 에 있음)
+# 센서/타깃 탭 런타임 설정 (기본값은 코드에 있음)
 sensors_config.json
+targets_config.json
 
 # PyInstaller 빌드 산출물
 build/

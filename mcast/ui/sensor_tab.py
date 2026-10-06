@@ -75,19 +75,25 @@ NEGATIVE_ATTRS = {
 ANGLE_ATTRS = {"cog_t", "cog_m", "heading"}
 
 
-def _make_field(parent, attr: str, width: int, value: str):
-    """숫자 필드면 Spinbox(상하 화살표), 아니면 Entry 를 만든다."""
-    step = NUMERIC_STEP.get(attr)
+def _make_field(parent, attr: str, width: int, value: str, *,
+                numeric_step: dict[str, str] = NUMERIC_STEP,
+                negative: set[str] = NEGATIVE_ATTRS,
+                angle: set[str] = ANGLE_ATTRS):
+    """숫자 필드면 Spinbox(상하 화살표), 아니면 Entry 를 만든다.
+
+    다른 탭에서 자체 필드 집합으로 재사용할 수 있게 step/음수/각도 맵을 인자로 받는다.
+    """
+    step = numeric_step.get(attr)
     if step is None:
         w = ttk.Entry(parent, width=width)
         w.insert(0, value)
         return w
     inc = float(step)
     dec = len(step.split(".")[1]) if "." in step else 0
-    if attr in ANGLE_ATTRS:
+    if attr in angle:
         lo, hi, wrap = 0.0, 360.0, True
     else:
-        lo = -1_000_000.0 if attr in NEGATIVE_ATTRS else 0.0
+        lo = -1_000_000.0 if attr in negative else 0.0
         hi, wrap = 1_000_000.0, False
     w = ttk.Spinbox(parent, width=width, from_=lo, to=hi,
                     increment=inc, format=f"%.{dec}f", wrap=wrap)

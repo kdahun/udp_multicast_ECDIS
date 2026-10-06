@@ -1,5 +1,5 @@
 """핵심 도메인·네트워킹 계층 (tkinter 비의존)."""
-from . import bam, nmea, paths, sensors, vdr
+from . import bam, nmea, paths, sensors, targets, vdr
 from .vdr import Reassembler, VdrImage, VdrReceiver
 from .bam import (
     AlertStore,
@@ -29,6 +29,7 @@ __all__ = [
     "bam",
     "nmea",
     "sensors",
+    "targets",
     "vdr",
     "VdrImage",
     "VdrReceiver",
