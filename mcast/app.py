@@ -11,8 +11,8 @@ from tkinter import ttk
 
 from .core import MulticastEngine
 from .ui import (
-    AisTab, BamTab, ConfigTab, EpfsTab, HeadingTab, RadarTab, ReceiveTab,
-    SdmeTab, SendTab, VdrTab,
+    AisTab, BamTab, ConfigTab, EpfsTab, HeadingTab, RadarTab, RawSendTab,
+    ReceiveTab, SdmeTab, SendTab, VdrTab,
 )
 
 
@@ -30,6 +30,7 @@ class App(tk.Tk):
 
         self.config_tab = ConfigTab(nb, self._engine, self._on_state_changed)
         self.send_tab = SendTab(nb, self._engine)
+        self.rawsend_tab = RawSendTab(nb)
         self.receive_tab = ReceiveTab(nb, self._engine.subscribe())
         self.bam_tab = BamTab(nb, self._engine.subscribe())
         self.vdr_tab = VdrTab(nb)
@@ -41,6 +42,7 @@ class App(tk.Tk):
 
         nb.add(self.config_tab, text="UDP MULTICAST 설정")
         nb.add(self.send_tab, text="송신 메시지")
+        nb.add(self.rawsend_tab, text="HEX/바이너리 송신")
         nb.add(self.receive_tab, text="수신 메시지")
         nb.add(self.bam_tab, text="BAM")
         nb.add(self.vdr_tab, text="VDR")
@@ -69,6 +71,7 @@ class App(tk.Tk):
 
     def _on_close(self) -> None:
         self._engine.stop()
+        self.rawsend_tab.shutdown()
         self.vdr_tab.shutdown()
         self.epfs_tab.shutdown()
         self.heading_tab.shutdown()

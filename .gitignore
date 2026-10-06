@@ -11,6 +11,7 @@ vdr_images/
 # 센서/타깃 탭 런타임 설정 (기본값은 코드에 있음)
 sensors_config.json
 targets_config.json
+rawsend_config.json
 
 # PyInstaller 빌드 산출물
 build/
